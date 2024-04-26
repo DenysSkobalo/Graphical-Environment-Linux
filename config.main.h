@@ -82,7 +82,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_t,      spawn,          {.v = termcmd } },
 	{ MODKEY, 			XK_g,	   spawn, 	   {.v = browser } },
-	{ MODKEY,			XK_l, 	   spawn, 	   {.v = telegram} },
+	{ MODKEY,			XK_x, 	   spawn, 	   {.v = telegram} },
 	{ MODKEY,			XK_z,	   spawn,          {.v = ide} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
