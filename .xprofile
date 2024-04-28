@@ -1,0 +1,5 @@
+~/.config/sys_scripts/set-keyboard-layout.sh &
+~/display_switch.sh &
+
+slstatus &
+exec dwm
