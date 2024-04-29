@@ -1,8 +1,5 @@
 /* See LICENSE file for copyright and license details. */
 
-// Wifi Selector
-static const char *wifi_selector[] = { "~/.config/sys_scripts/wifi_selector.sh" };
-
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -63,7 +60,9 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "/usr/bin/xfce4-terminal", NULL };
-static const char *browser[] = {"/usr/bin/google-chrome", NULL};
+static const char *browser[]  = { "/usr/bin/google-chrome", NULL };
+static const char *goland[]   = { "/snap/bin/goland", NULL };
+static const char *obsidian[] = { "/snap/bin/obsidian", NULL };
 
 static const char *const autostart[] = {
     "~/.config/polybar/launch.sh", NULL,
@@ -76,13 +75,15 @@ static const Key keys[] = {
 	{ MODKEY, 			XK_g,	   spawn,	   {.v = browser } },
 	{ MODKEY,                       XK_F3,     spawn,          {.v = (const char*[]){ "brightnessctl", "set", "10%-", NULL } }},
 	{ MODKEY,                       XK_F4,     spawn,          {.v = (const char*[]){ "brightnessctl", "set", "10%+", NULL } }},
-	{ MODKEY,                       XK_F6,      spawn,          {.v = (const char*[]){ "amixer", "sset", "'Master'", "5%-", NULL } }},
-	{ MODKEY,                       XK_F7,      spawn,          {.v = (const char*[]){ "amixer", "sset", "'Master'", "5%+", NULL } }},
-	{ MODKEY,                       XK_F5,      spawn,          {.v = (const char*[]){ "amixer", "sset", "'Master'", "toggle", NULL } }},
+	{ MODKEY,                       XK_F6,     spawn,          {.v = (const char*[]){ "amixer", "sset", "'Master'", "5%-", NULL } }},
+	{ MODKEY,                       XK_F7,     spawn,          {.v = (const char*[]){ "amixer", "sset", "'Master'", "5%+", NULL } }},
+	{ MODKEY,                       XK_F5,     spawn,          {.v = (const char*[]){ "amixer", "sset", "'Master'", "toggle", NULL } }},
+	{ MODKEY,			XK_z,	   spawn,	   {.v = goland } },
+	{ MODKEY,			XK_x,	   spawn,	   {.v = obsidian} },
 
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,             		XK_t, spawn,          	   {.v = termcmd } },
+	{ MODKEY,             		XK_t, 	   spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -90,10 +91,10 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY|ShiftMask,                       XK_Return, zoom,           {0} },
+	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,             		XK_q,      killclient,     {0} },
-	{ MODKEY,                       XK_Return,      setlayout,      {.v = &layouts[0]} },
+	{ MODKEY,                       XK_Return, setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
